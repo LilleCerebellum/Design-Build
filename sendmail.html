@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Send Mail</title>
+</head>
+<body>
+    <button onclick="openEmailClient()">Send Mail</button>
+    <script>
+        function openEmailClient() {
+            const mailtoLink = `mailto:?body=${encodeURIComponent('xxx')}`;
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
