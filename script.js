@@ -4,15 +4,15 @@ function openEmailClient() {
     window.location.href = mailtoLink;
 }
 
+function tempLogin() {
+    const tempUsername = document.getElementById("username").value;
+    const tempPassword = document.getElementById("password").value;
 
-function tempLogin () {
-    const tempUsername = document.getElementById("username")
-    const tempPassword = document.getElementById("password")
-
-    if (tempUsername == "admin" && tempPassword == "admin"){
-        console.log(sessionStorage.setItem("admin"))
-        console.log(sessionStorage.getItem(idk))
-        
+    if (tempUsername === "admin" && tempPassword === "admin") {
+        sessionStorage.setItem("username", tempUsername);
+        sessionStorage.setItem("data", "Dette er dine data.");
+        window.location.href = "userdata.html";
+    } else {
+        alert("Ugyldigt brugernavn eller adgangskode.");
     }
-        
 }

@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Upload</title>
+</head>
+<body>
+    <h1>Upload fil</h1>
+    <input type="file" id="fileInput"><br><br>
+    <button onclick="uploadFile()">Upload</button>
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById("fileInput");
+            if (fileInput.files.length > 0) {
+                alert("Filen er uploadet!");
+            } else {
+                alert("Vælg en fil først.");
+            }
+        }
+    </script>
+</body>
+</html>
