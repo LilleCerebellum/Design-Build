@@ -1,11 +1,16 @@
 <html>
 <head>
     <title>Brugerdata</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script src="script.js"></script>
+    <script>
+        addNavbar();
+    </script>
     <h1>Velkommen, <span id="username"></span></h1>
     <p>Dine data: <span id="data"></span></p>
-    <button onclick="logout()">Log ud</button>
+    <button onclick="location.href='Upload.html'">Upload fil</button>
     <script>
         const username = sessionStorage.getItem("username");
         const data = sessionStorage.getItem("data");
