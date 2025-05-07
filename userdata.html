@@ -9,18 +9,16 @@
         addNavbar();
     </script>
     <h1>Velkommen, <span id="username"></span></h1>
-    <p>Dine data: <span id="data"></span></p>
     <button onclick="location.href='Upload.html'">Upload fil</button>
+    <button onclick="location.href='viewdata.html'">Din data</button>
     <script>
         const username = sessionStorage.getItem("username");
-        const data = sessionStorage.getItem("data");
 
         if (!username) {
             alert("Du er ikke logget ind!");
             window.location.href = "login.html";
         } else {
             document.getElementById("username").textContent = username;
-            document.getElementById("data").textContent = data;
         }
 
         function logout() {
