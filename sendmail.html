@@ -4,9 +4,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            <span class="logo-text">BidMark</span>
+            <span class="logo-icon">🦷</span>
+        </div>
+        <div class="nav-buttons" id="nav-buttons">
+            <!-- Buttons will be set by JS -->
+        </div>
+    </div>
     <script src="script.js"></script>
     <script>
-        addNavbar();
+        // Dynamically set nav buttons based on login state
+        const navButtons = document.getElementById('nav-buttons');
+        const username = sessionStorage.getItem('username');
+        if (username) {
+            navButtons.innerHTML = '<button class="login-btn" onclick="logout()">Log ud</button>';
+        } else {
+            navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
+        }
     </script>
     <button onclick="openEmailClient()">Send mail</button>
 </body>

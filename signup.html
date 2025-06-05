@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Opret bruger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            <span class="logo-text">BidMark</span>
+            <span class="logo-icon">🦷</span>
+        </div>
+        <div class="nav-buttons" id="nav-buttons">
+            <!-- Buttons will be set by JS -->
+        </div>
+    </div>
+    <div class="signup-content">
+        <h1>Opret bruger</h1>
+        <form class="signup-form">
+            <div class="signup-row">
+                <div class="signup-field">
+                    <label for="fornavn">Fornavn</label>
+                    <input type="text" id="fornavn" name="fornavn" required>
+                </div>
+                <div class="signup-field">
+                    <label for="mobil">Mobil</label>
+                    <input type="text" id="mobil" name="mobil" required>
+                </div>
+            </div>
+            <div class="signup-row">
+                <div class="signup-field">
+                    <label for="efternavn">Efternavn</label>
+                    <input type="text" id="efternavn" name="efternavn" required>
+                </div>
+                <div class="signup-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <button class="signup-submit-btn" type="submit">Opret profil</button>
+        </form>
+    </div>
+    <div class="footer"></div>
+    <script src="script.js"></script>
+    <script>
+        // Dynamically set nav buttons based on login state
+        const navButtons = document.getElementById('nav-buttons');
+        const username = sessionStorage.getItem('username');
+        if (username) {
+            navButtons.innerHTML = '<button class="login-btn" onclick="logout()">Log ud</button>';
+        } else {
+            navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
+        }
+    </script>
+</body>
+</html>

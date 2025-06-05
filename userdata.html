@@ -4,26 +4,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="navbar-container"></div>
+    <div class="userdata-main-content">
+        <div class="userdata-left-panel">
+            <h1>Uploade</h1>
+            <b>Hvordan uploader du din journaler fra din tandlæge?</b>
+            <p>
+                Når du har modtaget dine journal fra din tandlæge over mail ville du nu skulle downloade den.<br><br>
+                Når du har downloade den er den klar til at blive uploadet på BidMark<br><br>
+                For at uploade den skal du trykke på knappen 'Uploade din journal' hvor du nu skal lægge din journal op.<br><br>
+                Herefter ville du nu kunne se den er gemt på BidMark<br><br>
+                Hvis du ønsker at slette en af dine journal skal du klikke ind på din journal og trykke slet
+            </p>
+        </div>
+        <div class="userdata-right-panel">
+            <button class="userdata-upload-btn" onclick="location.href='Upload.html'">Uploade din journal</button>
+            <div class="userdata-table-box">
+                <table class="userdata-table">
+                    <thead>
+                        <tr><th>Dine uploade journaler</th></tr>
+                    </thead>
+                    <tbody id="user-journals-list">
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
     <script src="script.js"></script>
     <script>
-        addNavbar();
-    </script>
-    <h1>Velkommen, <span id="username"></span></h1>
-    <button onclick="location.href='Upload.html'">Upload fil</button>
-    <button onclick="location.href='viewdata.html'">Din data</button>
-    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                const navButtons = document.getElementById('nav-buttons');
+                const username = sessionStorage.getItem('username');
+                if (username) {
+                    navButtons.innerHTML = '<button class="login-btn" onclick="logoutToHome()">Log ud</button>';
+                } else {
+                    navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
+                }
+            });
+        // Session check
         const username = sessionStorage.getItem("username");
-
         if (!username) {
             alert("Du er ikke logget ind!");
             window.location.href = "login.html";
-        } else {
-            document.getElementById("username").textContent = username;
         }
-
-        function logout() {
+        // Add logoutToHome function
+        function logoutToHome() {
             sessionStorage.clear();
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         }
     </script>
 </body>

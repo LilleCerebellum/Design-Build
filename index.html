@@ -4,11 +4,45 @@
     <link rel="stylesheet" href="styles.css">
 </head>     
 <body>
+    <div class="navbar">
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            <span class="logo-text">BidMark</span>
+            <span class="logo-icon">🦷</span>
+        </div>
+        <div class="nav-buttons" id="nav-buttons">
+            <!-- Buttons will be set by JS -->
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="left-panel">
+            <h1>Hvem er BidMark?</h1>
+            <p>
+                BidMark er det sted hvor du kan holde styr på dine tandlæge journaler, så hvis du også ville have styr på dine så er du kommet til det rigtige sted.<br><br>
+                Vi hjælper dig med at lave skabelonen til den mail du skal sende til din tandlæge og hjælpe dig med at uploade dem til BidMark så du kan holde styr på dem.
+            </p>
+        </div>
+        <div class="right-panel">
+            <button class="send-mail-btn" onclick="location.href='sendmail.html'">Send mail</button>
+            <div class="info-box">
+                <b>Hvordan forgår det når du skal have adgang til dine journaler?</b>
+                <p>
+                    For at få fat i dine journaler skal du sende en mail til din tandlæge. Dette gøre du ved at klikke på 'Send mail' knappe for oven. Her kommer der en skabelon hvor du kun skal udfylde dine oplysninger og sende afsted til din tandlæge.<br><br>
+                    For at uploade dem så du kan holde styr på dem skal du log in eller oprette en bruger. Dette kan du ved at klikke på knapperne oppe i højre hjørne.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
     <script src="script.js"></script>
     <script>
-        addNavbar();
+        // Dynamically set nav buttons based on login state
+        const navButtons = document.getElementById('nav-buttons');
+        const username = sessionStorage.getItem('username');
+        if (username) {
+            navButtons.innerHTML = '<button class="login-btn" onclick="logout()">Log ud</button>';
+        } else {
+            navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
+        }
     </script>
-    <h1>Hjem</h1>
-    <p>Velkommen til hjemmesiden.</p>
 </body>
 </html>
