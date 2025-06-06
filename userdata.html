@@ -4,7 +4,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="navbar-container"></div>
+    <div class="navbar">
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            <span class="logo-text">BidMark</span>
+            <span class="logo-icon">🦷</span>
+        </div>
+        <div class="nav-buttons" id="nav-buttons">
+            <!-- Buttons will be set by JS -->
+        </div>
+    </div>
     <div class="userdata-main-content">
         <div class="userdata-left-panel">
             <h1>Uploade</h1>
@@ -25,11 +33,7 @@
                         <tr><th>Dine uploade journaler</th></tr>
                     </thead>
                     <tbody id="user-journals-list">
-                        <tr><td></td></tr>
-                        <tr><td></td></tr>
-                        <tr><td></td></tr>
-                        <tr><td></td></tr>
-                        <tr><td></td></tr>
+                        <!-- Dynamisk indhold indsættes af script.js -->
                     </tbody>
                 </table>
             </div>
@@ -37,30 +41,5 @@
     </div>
     <div class="footer"></div>
     <script src="script.js"></script>
-    <script>
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-container').innerHTML = html;
-                const navButtons = document.getElementById('nav-buttons');
-                const username = sessionStorage.getItem('username');
-                if (username) {
-                    navButtons.innerHTML = '<button class="login-btn" onclick="logoutToHome()">Log ud</button>';
-                } else {
-                    navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
-                }
-            });
-        // Session check
-        const username = sessionStorage.getItem("username");
-        if (!username) {
-            alert("Du er ikke logget ind!");
-            window.location.href = "login.html";
-        }
-        // Add logoutToHome function
-        function logoutToHome() {
-            sessionStorage.clear();
-            window.location.href = "index.html";
-        }
-    </script>
 </body>
 </html>
