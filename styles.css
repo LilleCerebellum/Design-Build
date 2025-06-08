@@ -1,7 +1,19 @@
+/*
+STILGUIDE (ældre brugere):
+- Primær farve: #2176ae (blå)
+- Sekundær: #56B2DF (lys blå)
+- Baggrund: #fff (hvid)
+- Tekst: #222 (mørk grå)
+- Knapper: store, tydelige, blå/hvid kontrast
+- Tekst: stor, læsbar, fed på knapper
+*/
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #fff;
+    font-size: 1.25rem;
+    line-height: 1.6;
 }
 
 .navbar {
@@ -266,15 +278,51 @@ body {
 
 .userdata-table th, .userdata-table td {
     border-bottom: 2px solid #2176ae;
-    padding: 16px 12px;
+    padding: 18px 12px;
     text-align: left;
 }
 
 .userdata-table th {
     background: #f8f8f8;
-    font-size: 1.3rem;
+    color: #2176ae;
+    font-weight: bold;
 }
 
-.userdata-table tr:last-child td {
-    border-bottom: none;
+.userdata-table tr td button {
+    font-size: 1.1rem;
+    padding: 8px 18px;
+    background: #56B2DF;
+    color: #222;
+    border-radius: 6px;
+    border: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.userdata-table tr td button:hover {
+    background: #2176ae;
+    color: #fff;
+}
+
+h1, h2, h3 {
+    color: #2176ae;
+    font-weight: bold;
+}
+
+b, label {
+    font-size: 1.2rem;
+    color: #222;
+}
+
+@media (max-width: 900px) {
+    .userdata-main-content, .main-content {
+        flex-direction: column;
+        margin: 10px;
+    }
+    .userdata-left-panel, .left-panel, .userdata-right-panel, .right-panel {
+        width: 100% !important;
+        padding: 10px !important;
+    }
+    .userdata-table-box, .info-box {
+        max-width: 100% !important;
+    }
 }

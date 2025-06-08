@@ -18,23 +18,8 @@
     <button onclick="uploadFile()">Upload</button>
     <script src="script.js"></script>
     <script>
-        // Dynamically set nav buttons based on login state
-        const navButtons = document.getElementById('nav-buttons');
-        const username = sessionStorage.getItem('username');
-        if (username) {
-            navButtons.innerHTML = '<button class="login-btn" onclick="logout()">Log ud</button>';
-        } else {
-            navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
-        }
-
-        function uploadFile() {
-            const fileInput = document.getElementById("fileInput");
-            if (fileInput.files.length > 0) {
-                alert("Filen er uploadet!");
-            } else {
-                alert("Vælg en fil først.");
-            }
-        }
+        // Navbar og sessionbeskyttelse håndteres nu af script.js
+        // uploadFile-funktionen fra script.js bruges automatisk
     </script>
 </body>
 </html>
