@@ -9,9 +9,7 @@
             <span class="logo-text">BidMark</span>
             <span class="logo-icon">🦷</span>
         </div>
-        <div class="nav-buttons" id="nav-buttons">
-            <!-- Buttons will be set by JS -->
-        </div>
+        <!-- Kun logo i navbar på forsiden -->
     </div>
     <div class="main-content">
         <div class="left-panel">
@@ -21,21 +19,31 @@
                 Vi hjælper dig med at lave skabelonen til den mail du skal sende til din tandlæge og hjælpe dig med at uploade dem til BidMark så du kan holde styr på dem.
             </p>
         </div>
-        <div class="right-panel">
-            <button class="send-mail-btn" onclick="location.href='sendmail.html'">Send mail</button>
-            <div class="info-box">
-                <b>Hvordan forgår det når du skal have adgang til dine journaler?</b>
-                <p>
-                    For at få fat i dine journaler skal du sende en mail til din tandlæge. Dette gøre du ved at klikke på 'Send mail' knappe for oven. Her kommer der en skabelon hvor du kun skal udfylde dine oplysninger og sende afsted til din tandlæge.<br><br>
-                    For at uploade dem så du kan holde styr på dem skal du log in eller oprette en bruger. Dette kan du ved at klikke på knapperne oppe i højre hjørne.
-                </p>
+        <div class="index-auth-section">
+            <div class="index-login-box">
+                <h2>Log ind</h2>
+                <form id="index-login-form" autocomplete="off">
+                    <label for="index-username">Brugernavn:</label>
+                    <input type="text" id="index-username" name="username" required>
+                    <label for="index-password">Adgangskode:</label>
+                    <input type="password" id="index-password" name="password" required>
+                    <div class="login-row">
+                        <button type="submit" class="login-btn">Log ind</button>
+                        <button type="button" class="signup-btn" onclick="location.href='signup.html'">Opret bruger</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="footer"></div>
     <script src="script.js"></script>
     <script>
-        // Navbar håndteres nu af script.js
+        document.getElementById('index-login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('index-username').value.trim();
+            const password = document.getElementById('index-password').value.trim();
+            window.tempLogin(username, password);
+        });
     </script>
 </body>
 </html>

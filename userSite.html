@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Guide til brug</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo" onclick="location.href='userSite.html'" style="cursor:pointer;">
+            <span class="logo-text">BidMark</span>
+            <span class="logo-icon">🦷</span>
+        </div>
+        <div class="nav-buttons">
+            <button class="logout-btn" onclick="logout()">Log ud</button>
+        </div>
+    </div>
+    <div class="userSite-main-content">
+        <h1>Guide til brug</h1>
+        <div class="userSite-guide-box">
+            <ol>
+                <li>Send en mail til din tandlæge for at få dine journaler digitalt.</li>
+                <li>Upload dine journaler som PDF via "Upload journal".</li>
+                <li>Se og administrer dine uploadede journaler under "Din journal".</li>
+            </ol>
+        </div>
+        <div class="userSite-btn-row">
+            <button class="userSite-big-btn" onclick="location.href='sendmail.html'">Send mail</button>
+            <button class="userSite-big-btn" onclick="location.href='journal.html'">Din journal</button>
+            <button class="userSite-big-btn" onclick="location.href='Upload.html'">Upload journal</button>
+        </div>
+    </div>
+    <div class="footer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Send mail</title>
+    <title>Dine journaler</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,15 +13,26 @@
             <button class="logout-btn" onclick="logout()">Log ud</button>
         </div>
     </div>
-    <div class="sendmail-content">
+    <div class="journal-content">
         <button class="back-btn" onclick="location.href='userSite.html'">← Tilbage</button>
-        <h1>Send mail til tandlæge</h1>
-        <div class="sendmail-info">
-            <p>Klik på knappen for at åbne din mail-klient med en færdig skabelon til at anmode om dine journaler.</p>
+        <h1>Dine uploadede journaler</h1>
+        <div class="userdata-table-box">
+            <table class="userdata-table">
+                <thead>
+                    <tr><th>Journalnavn</th></tr>
+                </thead>
+                <tbody id="user-journals-list">
+                    <!-- Dynamisk indhold indsættes af script.js -->
+                </tbody>
+            </table>
         </div>
-        <button class="userSite-big-btn" onclick="openEmailClient()">Send mail</button>
     </div>
     <div class="footer"></div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            showUserFiles();
+        });
+    </script>
 </body>
 </html>

@@ -10,7 +10,7 @@ function checkSessionOrRedirect() {
     const username = sessionStorage.getItem("username");
     if (!username) {
         alert("Du er ikke logget ind!");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 }
 
@@ -20,36 +20,40 @@ function setNavbarButtons() {
     if (!navButtons) return;
     const username = sessionStorage.getItem('username');
     if (username) {
-        navButtons.innerHTML = '<button class="login-btn" onclick="logout()">Log ud</button>';
+        navButtons.innerHTML = '<button class="logout-btn" onclick="logout()">Log ud</button>';
     } else {
-        navButtons.innerHTML = '<button class="login-btn" onclick="location.href=\'login.html\'">Log in</button> <button class="signup-btn" onclick="location.href=\'signup.html\'">Opret bruger</button>';
+        navButtons.innerHTML = '';
     }
 }
 
 // --- FORBEDRET LOGIN ---
-function tempLogin() {
-    const tempUsername = document.getElementById("username").value.trim();
-    const tempPassword = document.getElementById("password").value.trim();
-    if (tempUsername.length < 3) {
+// Gør tempLogin brugbar fra forsiden (med parametre)
+function tempLogin(username, password) {
+    if (typeof username === "undefined") {
+        username = document.getElementById("username").value.trim();
+        password = document.getElementById("password").value.trim();
+    }
+    if (username.length < 3) {
         alert("Brugernavn skal være mindst 3 tegn.");
         return;
     }
-    if (tempUsername === "admin" && tempPassword === "admin") {
-        sessionStorage.setItem("username", tempUsername);
+    if (username === "admin" && password === "admin") {
+        sessionStorage.setItem("username", username);
         // Opret tom fil-liste hvis ikke eksisterer
-        if (!localStorage.getItem(tempUsername + "_files")) {
-            localStorage.setItem(tempUsername + "_files", JSON.stringify([]));
+        if (!localStorage.getItem(username + "_files")) {
+            localStorage.setItem(username + "_files", JSON.stringify([]));
         }
-        window.location.href = "userdata.html";
+        window.location.href = "userSite.html";
     } else {
         alert("Ugyldigt brugernavn eller adgangskode.");
     }
 }
+window.tempLogin = tempLogin; // Gør tilgængelig for index.html
 
 // --- LOG UD ---
 function logout() {
     sessionStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
 
 // --- UPLOAD FUNKTION (kun frontend/demo) ---
@@ -68,17 +72,18 @@ function uploadFile() {
     const username = sessionStorage.getItem("username");
     if (!username) {
         alert("Du er ikke logget ind!");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
         return;
     }
     let files = JSON.parse(localStorage.getItem(username + "_files") || "[]");
     files.push(file.name);
     localStorage.setItem(username + "_files", JSON.stringify(files));
     alert("Filen er uploadet!");
-    window.location.href = "userdata.html";
+    window.location.href = "journal.html";
 }
 
 // --- VISNING AF JOURNALER ---
+// Tilpas til også at virke på journal.html
 function showUserFiles() {
     const username = sessionStorage.getItem("username");
     if (!username) return;
@@ -111,16 +116,23 @@ function deleteFile(idx) {
 
 // --- INITIERING PÅ HVER SIDE ---
 document.addEventListener("DOMContentLoaded", function() {
-    // Navbar på alle sider
-    setNavbarButtons();
-    // Sessionbeskyttelse på sider med data
-    if (window.location.pathname.includes("userdata.html") || window.location.pathname.includes("Upload.html")) {
+    // Navbar på alle sider undtagen index.html
+    if (!window.location.pathname.endsWith("index.html")) {
+        setNavbarButtons();
+    }
+    // Sessionbeskyttelse på sider med data (ikke index.html)
+    if (
+        window.location.pathname.includes("userSite.html") ||
+        window.location.pathname.includes("Upload.html") ||
+        window.location.pathname.includes("journal.html")
+    ) {
         checkSessionOrRedirect();
     }
-    // Vis brugerfiler på userdata.html
-    if (window.location.pathname.includes("userdata.html")) {
+    // Vis brugerfiler på journal.html
+    if (window.location.pathname.includes("journal.html")) {
         showUserFiles();
     }
+    // Vis brugerfiler på userSite.html fjernes (kun på journal.html)
     // --- UPLOAD.html forbedring: brug uploadFile fra script.js og sessionbeskyttelse ---
     if (window.location.pathname.includes("Upload.html")) {
         const uploadBtn = document.querySelector('button[onclick^="uploadFile"]');

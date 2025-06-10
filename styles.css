@@ -313,6 +313,178 @@ b, label {
     color: #222;
 }
 
+.userSite-main-content {
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userSite-guide-box {
+    background: #fff;
+    border: 4px solid #2176ae;
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px;
+    font-size: 1.2rem;
+}
+
+.userSite-btn-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.userSite-big-btn {
+    background: #2176ae;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 28px 60px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 0;
+}
+
+.userSite-big-btn:hover {
+    background: #005b8f;
+}
+
+.logout-btn {
+    background: #fff;
+    color: #2176ae;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid #2176ae;
+    border-radius: 6px;
+    padding: 10px 24px;
+    margin-left: 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.logout-btn:hover {
+    background: #2176ae;
+    color: #fff;
+}
+
+.back-btn {
+    background: #56B2DF;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.back-btn:hover {
+    background: #2176ae;
+}
+
+.upload-content, .sendmail-content, .journal-content {
+    max-width: 700px;
+    margin: 60px auto 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-info, .sendmail-info {
+    background: #f8f8f8;
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.index-auth-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 60px 0 80px 0;
+}
+
+.index-login-box {
+    background: #fff;
+    border: 4px solid #2176ae;
+    border-radius: 8px;
+    padding: 32px 32px 24px 32px;
+    width: 350px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.index-login-box h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.index-login-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.index-login-box input {
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    border: 2px solid #2176ae;
+    border-radius: 4px;
+}
+
+.login-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.login-btn, .signup-btn {
+    background: #2176ae;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background: #005b8f;
+}
+
+.signup-link {
+    color: #2176ae;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.signup-link:hover {
+    color: #005b8f;
+}
+
 @media (max-width: 900px) {
     .userdata-main-content, .main-content {
         flex-direction: column;
@@ -324,5 +496,13 @@ b, label {
     }
     .userdata-table-box, .info-box {
         max-width: 100% !important;
+    }
+    .index-auth-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .index-login-box, .index-signup-box {
+        width: 95vw;
+        max-width: 400px;
     }
 }

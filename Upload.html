@@ -5,21 +5,24 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+        <div class="logo" onclick="location.href='userSite.html'" style="cursor:pointer;">
             <span class="logo-text">BidMark</span>
             <span class="logo-icon">🦷</span>
         </div>
-        <div class="nav-buttons" id="nav-buttons">
-            <!-- Buttons will be set by JS -->
+        <div class="nav-buttons">
+            <button class="logout-btn" onclick="logout()">Log ud</button>
         </div>
     </div>
-    <h1>Upload fil</h1>
-    <input type="file" id="fileInput"><br><br>
-    <button onclick="uploadFile()">Upload</button>
+    <div class="upload-content">
+        <button class="back-btn" onclick="location.href='userSite.html'">← Tilbage</button>
+        <h1>Upload fil</h1>
+        <div class="upload-info">
+            <p>Her kan du uploade dine journaler som PDF. Vælg din fil og klik på "Upload journal".</p>
+        </div>
+        <input type="file" id="fileInput"><br><br>
+        <button class="userSite-big-btn" onclick="uploadFile()">Upload journal</button>
+    </div>
+    <div class="footer"></div>
     <script src="script.js"></script>
-    <script>
-        // Navbar og sessionbeskyttelse håndteres nu af script.js
-        // uploadFile-funktionen fra script.js bruges automatisk
-    </script>
 </body>
 </html>
