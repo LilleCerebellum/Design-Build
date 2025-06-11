@@ -1,24 +1,26 @@
 import pdfplumber
 import re
 
-pattern = re.compile(r"børn \d+-\d+", re.IGNORECASE)
+
+pattern = re.compile(r"Date: \d+-\d+-\d+", re.IGNORECASE)
     
-with pdfplumber.open("C:/Users/soell_7pbpycu/Desktop/Synopsis 3 semester projekt.pdf") as f:
+    
+UPLOAD_FOLDER = "/home/sugrp202/journals/"
+    
+
+with pdfplumber.open(UPLOAD_FOLDER + "falsk_tandlaegejournal.pdf") as f:
     for i in f. pages:
         Text = i. extract_text()
         if Text:
             print("it extracted")
-            matches = pattern.findall(Text)
-            print(*matches, sep='\n')
-    
+            matches = pattern.search(Text)
+            if matches:
+                dateText = matches.group()
+                print("grouping:" + str(dateText))
+            else:
+                print("No date found in text.")
 
 
-"""
-test_string = "Example text without the forbidden word."
-result = pattern.match(test_string)
-if result:
-    print("No forbidden word found.")
-else:
-    print("Forbidden word detected.")
-    
-"""
+
+
+#https://medium.com/@python-javascript-php-html-css/creating-patterns-to-exclude-specific-words-using-regular-expressions-0b6398c644b6
