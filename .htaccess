@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+ServerName export.eduhost.dk
+WSGIDaemonProcess flaskapp threads=5 
+WSGIScriptAlias / /home/sugrp202/public_html/app.wsgi
+
+WSGIApplicationGroup %{GLOBAL}
+
+<Directory /home/sugrp202/public_html>
+    WSGIProcessGroup flaskapp
+    Require all granted
+    Order deny,allow
+    allow from all
+</Directory>
+
+Alias /static /home/sugrp202/public_html/static
+
+<directory /home/sugrp202/public_html/static
+    Order deny,allow
+    allow from all
+</directory>
+
+ErrorLog /home/sugrp202/public_html/logs/error.log
+CustomLog /home/sugrp202/public_html/logs/access.log combined
+</VirtualHost>
