@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientScreen</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/Clientpage.css')}}>
+
+</head>
+<body>
+ <div class="standardcontainer">
+        <form action="/Client" method="POST" enctype="multipart/form-data">
+            <label for="file">Select File(s):</label>
+            <input type="file" name="file" multiple required>
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" name="patient_id" placeholder="Patient ID (optional)">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    
+</body>
+</html>

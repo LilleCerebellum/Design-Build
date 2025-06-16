@@ -1,0 +1,19 @@
+LoginInfo
+    Fornavn
+    Efternavn
+    Kodeord
+    Mobil
+    Email
+
+
+Visningsdata
+    userID
+    Dato
+    behandler
+    
+
+
+
+
+
+Får tildelt ID som identifikator

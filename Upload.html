@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Upload</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
     <div class="navbar">
@@ -14,17 +14,20 @@
         </div>
     </div>
 
-    
+
     <div class="upload-content">
         <button class="back-btn" onclick="location.href='userSite.html'">← Tilbage</button>
         <h1>Upload fil</h1>
         <div class="upload-info">
             <p>Her kan du uploade dine journaler som PDF. Vælg din fil og klik på "Upload journal".</p>
         </div>
-        <input type="file" id="fileInput"><br><br>
-        <button class="userSite-big-btn" onclick="uploadFile()">Upload journal</button>
+        <form action="/Upload" method="POST" enctype="multipart/form-data">
+            <label for="file">Select File(s):</label>
+            <input type="file" name="fileInput" multiple>
+            <button type="submit">Upload</button>
+        </form>
     </div>
     <div class="footer"></div>
-    <script src="script.js"></script>
+    <script src="/static/script/script.js"></script>
 </body>
 </html>
