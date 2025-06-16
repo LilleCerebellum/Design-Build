@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, flash, redirect, session
-from werkzeug.utils import secure_filename, generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
-from functions import allowed_file, signup_into_loginInfo
-from fileRead import extract_date_from_pdf, signup_into_loginInfo, login_into_loginInfo
-
+from functions import allowed_file, signup_into_loginInfo, login_into_loginInfo, insert_into_visningsdata
+from DBAccess import dbaccess
+from fileRead import extract_date_from_pdf
 app = Flask(__name__, static_folder='public_html/static', template_folder='public_html/templates')
 app.secret_key = '911wasinsidejob'
 
@@ -39,30 +40,13 @@ def Upload():
                 date, behandler = extract_date_from_pdf(file_path)
                 print("Dato fundet:", date)
                 print("Behandler fundet:", behandler)
+                if date and behandler:
+                    insert_into_visningsdata(date, behandler)
+                    flash("TS has been uploaded and data extracted successfully!")
 
     return render_template('Upload.html')
         
         
-"""
-To do
-
-Create a dbAcess file for (visningsData og loginInfo)  and import function into here and functions.py
-    connection = sql.connect(
-        host='localhost',
-        user='sugrp202',
-        password='F25-20-010-x20',
-        database='visningsData',
-        )
-
-    connection = sql.connect(
-        host='localhost',
-        user='sugrp202',
-        password='F25-20-010-x20',
-        database='loginInfo',
-        )
-
-
-"""
 
         
 
@@ -88,17 +72,28 @@ def Signup():
         password = request.form.get('signup-password')
         password_repeat = request.form.get('signup-password-repeat')
 
+
         
         if password != password_repeat:
             flash("TS aint it dawg, passwords dont match stupid")
+            print("Passwords do not match")
             return render_template('signup.html')
+ 
+        
+        user = login_into_loginInfo(email, password)
+        if user:
+            flash("Email already registered")
+            return render_template('signup.html')
+        
 
         
         hashed_password = generate_password_hash(password)
 
-        signup_into_loginInfo()
+
+        signup_into_loginInfo(fornavn, efternavn, mobil, email, hashed_password)
 
         flash("damn you got TS on the raps big dawg")
+        redirect('/login')
 
 
     return render_template('signup.html')
@@ -112,9 +107,10 @@ def userSite():
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
-        password = request.form.get('password')
+        plain_password = request.form.get('password')
 
-        user = login_into_loginInfo(connection, email, password)
+
+        user = login_into_loginInfo(email, plain_password)
         if not user:
             flash("Login nejnej, check email eller password")
             return render_template('login.html')

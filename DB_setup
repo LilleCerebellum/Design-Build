@@ -1,4 +1,4 @@
-LoginInfo
+Table LoginInfo
     Fornavn
     Efternavn
     Kodeord
@@ -10,7 +10,7 @@ visningsData
     userID
     Dato
     behandler
-    
+
 
 
 

@@ -22,22 +22,23 @@
         <div class="index-auth-section">
             <div class="index-login-box">
                 <h2>Log ind</h2>
-                <form id="index-login-form" autocomplete="off">
-                    <label for="index-username">Brugernavn:</label>
-                    <input type="text" id="index-username" name="username" required>
+                <form id="index-login-form" autocomplete="off", method="POST" action="/login">
+                    <label for="index-Email">Email:</label>
+                    <input type="text" id="index-Email" name="email" required>
                     <label for="index-password">Adgangskode:</label>
                     <input type="password" id="index-password" name="password" required>
                     <div class="login-row">
                         <button type="submit" class="login-btn">Log ind</button>
-                        <button type="button" class="signup-btn" onclick="location.href='signup.html'">Opret bruger</button>
+                        <button type="button" class="signup-btn" onclick="location.href='/Signup'">Opret bruger</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <div class="footer"></div>
-    <!--
+    
     <script src="/static/script/script.js"></script>
+    <!--
     <script>
         document.getElementById('index-login-form').addEventListener('submit', function(e) {
             e.preventDefault();
